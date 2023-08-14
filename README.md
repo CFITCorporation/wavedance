@@ -1,19 +1,19 @@
 - ## **WaveDance - CFIT示波器**
 ### **前言**
-**互联网的万千矿藏里，
-一首音乐被我发掘。
-古老电音中节奏动感，
-而它的波形更让人神迷。
-立方体旋转于二维世界，
-熟悉的余弦由疏向密。
-华丽的图案，
-却存活于示波器，
-怎不徒生遗憾？
-发掘wav的奥秘，
-网页——
-正是音频的跃动。**
-**这首音乐，正是Oscillofunwave，本项目由此问世。[（由此下载该音频，可用于测试）](https://raw.gitmirror.com/CFITCorporation/cfitpic/main/oscillofun-wave.wav "由此下载该音频")
-[演示视频由此查看](https://www.bilibili.com/video/BV1yz4y1v73L "演示视频由此查看")**
+**互联网的万千矿藏里，**
+**一首音乐被我发掘。**
+**古老电音中节奏动感，**
+**而它的波形更让人神迷。**
+**立方体旋转于二维世界，**
+**熟悉的余弦由疏向密。**
+**华丽的图案，**
+**却存活于示波器，**
+**怎不徒生遗憾？**
+**发掘wav的奥秘，**
+**网页——**
+**正是音频的跃动。**
+**这首音乐，正是Oscillofunwave，本项目由此问世。[（由此下载该音频，可用于测试）](https://raw.gitmirror.com/CFITCorporation/cfitpic/main/oscillofun-wave.wav "由此下载该音频")**
+**[演示视频由此查看](https://www.bilibili.com/video/BV1yz4y1v73L "演示视频由此查看")**
 ![wave01](https://img.suze666.top/i/2023/08/14/64d9b1610242b.png)
 ![wave02](https://img.suze666.top/i/2023/08/14/64d9b16239650.png)
 ****
