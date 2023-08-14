@@ -1,0 +1,129 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
+    <title>CFIT示波器</title>
+    <style>
+        .notbtfdiv {
+            position: fixed;
+            z-index: 3690;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px #fff;
+            width: calc(100% - 25px);
+            height: calc(100% - 65px);
+            padding: 5px 5px 5px 5px;
+            background: rgba(65, 65, 65, 0.7);
+            backdrop-filter: blur(3px);
+        }
+        
+        .tooldiv {
+            position: fixed;
+            z-index: 3690;
+            border-radius: 10px;
+            width: calc(100% - 25px);
+            height: calc(100% - 25px);
+            padding: 5px 5px 5px 5px;
+            background: rgba(65, 65, 65, 0.3);
+            backdrop-filter: blur(3px);
+        }
+        
+        .cfitfont2 {
+            font-family: 幼圆;
+            letter-spacing: 3px;
+            color: #0066FF;
+            background: -webkit-linear-gradient(90deg, #ccddFF, #ddeeFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 1px 5px #aabbff;
+            /*font-family:Georgia*/
+        }
+        
+        .select {
+            background: rgba(165, 165, 165, 0.7);
+            padding: 8px 18px 8px 18px;
+            height: auto;
+            width: auto;
+            border-radius: 5px;
+            border: 1px solid #0066ff;
+            margin-right: 5px;
+            font-size: 16pt;
+            color: #fff;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            box-shadow: 0px 0px 5px #b3bce7;
+            border: none;
+            height: 10px;
+            width: 220px;
+            -webkit-linear-gradient(90deg, #bbc3e9, #b3bce7);
+            background-color: #b3bce7;
+            border-radius: 15px;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+            -webkit-appearance: none;
+            border-radius: 200px;
+            height: 19px;
+            width: 19px;
+            background-color: #6677ff;
+            box-shadow: 0px 0px 5px #6677ff;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            -webkit-transform: scale(1.15);
+            -moz-transform: scale(1.15);
+            -o-transform: scale(1.15);
+            -ms-transform: scale(1.15);
+        }
+        
+        .copyright {
+            font-family: 黑体;
+            letter-spacing: 3px;
+            color: #0066FF;
+            background: -webkit-linear-gradient(90deg, #ccddFF, #ddeeFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 1px 5px #aabbff;
+            bottom: 10px;
+            position: absolute;
+            left: 50%;
+            font-size: 10px;
+            transform: translate(-50%, 0);
+            /*font-family:Georgia*/
+        }
+    </style>
+</head>
+<body>
+    <div class="tooldiv" id="tooldiv" onclick="shohid()" style="transform: translateY(-1912px);">
+        <div class="notbtfdiv">
+            <b><center class="cfitfont2">
+			<h1 class="cfitfont2">示波器控制台</h1>
+			文件载入：<button class="select" onclick="document.getElementById('fileInput').click();">文件载入</button>
+			<br><br>↑此处载入文件。<br>文件选择后，将自动播放。<br>注意，所有操作在浏览器进行，<br>切勿载入过大文件。
+			<input accept=".wav,.flac,.m4a,.ogg,.mp4,.mp3" type="file" id="fileInput" style="display:none;color:#fff">
+			<br><br>
+			音频控制：音乐信息↓<br><br>
+			<span id="namemusic">未选择音乐</span><br><br>
+			<input type="range" id="bar" value='0' max="0" min="0" oninput="changeprogress();"> <span id="length">00:00</span>  | <span id="total">00:00</span>
+			<br><br>
+			↑此处显示载入文件信息。<br>可以拖动音乐进度条调整对应进度。<br>
+			注意，每次操作需等待片刻，<br>与浏览器性能有关。
+			</center></b>
+            <span class="copyright">CFIT © 2017-2023 版权所有。<br>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+        <span class="copyright" style="bottom:-30px;font-size:20pt;">︾<br>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <canvas id="waveformCanvas" width="100%" height="100%" style="position:absolute;left:0px;top:0px;background:#000"></canvas>
+    <center>
+        <audio src="" id="aud" style="opacity:0.5"></audio>
+    </center>
+    <script src="anime.min.js"></script>
+    <script src="cfitwave.js"></script>
+</body>
