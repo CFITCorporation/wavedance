@@ -130,29 +130,30 @@ waveformCanvas.onclick = function() {
 }
 /*主函数*/
 function change() {
-    width = waveformCanvas.width;
-    height = waveformCanvas.height;
-    canvasContext.clearRect(0, 0, width, height);
     var file = fileInput.files[0];
-    var readers = new FileReader();
-    readers.readAsDataURL(file);
-    console.log(file.name);
-    namemusic.innerHTML = file.name;
-    readers.onload = function() {
-        aud.src = readers.result;
-        var reader = new FileReader();
-        reader.readAsArrayBuffer(file);
-        reader.onload = function() {
-            var dur;
-            dur = isNaN(aud.duration) == true ? 1 : aud.duration;//无效音频文件默认长度1
-            total.innerHTML = exchange(parseInt(dur));
-            bar.max = dur;
-            var audioData = reader.result;
-            audioContext.decodeAudioData(audioData, buffer => {
-                drawWaveform(buffer);//获取双声道及显示效果
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+        var blob = new Blob([event.target.result], { type: file.type });
+
+        aud.src = URL.createObjectURL(blob);
+        namemusic.innerHTML = file.name;
+
+        var readerArrayBuffer = new FileReader();
+        readerArrayBuffer.onload = function() {
+            var audioData = readerArrayBuffer.result;
+            audioContext.decodeAudioData(audioData, function(buffer) {
+                var dur = isNaN(aud.duration) ? 1 : aud.duration; // 无效音频文件默认长度1
+                total.innerHTML = exchange(parseInt(dur));
+                bar.max = dur;
+                drawWaveform(buffer); // 获取双声道及显示效果
             });
-        }
-    }
+        };
+        
+        readerArrayBuffer.readAsArrayBuffer(blob);
+    };
+
+    reader.readAsArrayBuffer(file);
 }
 /*实时更新进度条*/
 aud.ontimeupdate = function() {
